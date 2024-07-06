@@ -1,13 +1,20 @@
+import { useState } from "react";
 import "./App.css";
 
 function App() {
+  const [content, setContent] = useState("Greeting Message");
+
+  const messagesList = ["สวัสดี!", "Hi!", "你好!"];
+
   return (
     <div className="App">
-      <div className="greeting-container">Greeting Message</div>
+      <div className="greeting-container">{content}</div>
       <div className="buttons">
-        <button>สวัสดี!</button>
-        <button>Hi!</button>
-        <button>你好!</button>
+        {messagesList.map((msg, idx) => (
+          <button key={idx} onClick={() => setContent(msg)}>
+            {msg}
+          </button>
+        ))}
       </div>
     </div>
   );
